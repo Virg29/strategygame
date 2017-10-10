@@ -1,0 +1,2 @@
+# strategygame
+Game for android
