@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/mainMap"
+        android:id="@+id/fuckinlol"
         android:focusable="false"
         android:isScrollContainer="true"
         android:src="@mipmap/skyrim"

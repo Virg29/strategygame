@@ -12,12 +12,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 public class Main extends AppCompatActivity implements View.OnTouchListener {
     float x;
     float y;
-    ImageView map;
+    ImageView mapLol;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +27,14 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.map);
-        map = (ImageView)findViewById(R.id.mainMap);
-        map.setOnTouchListener(this);
+        mapLol = (ImageView)findViewById(R.id.fuckinlol);
+        try {
+            mapLol.setOnTouchListener(this);
+        }catch (Exception e){
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "ЧТО ЗА ХУЙНЯ ТО БлЯТЬ А", Toast.LENGTH_LONG);
+            toast.show();
+        }
 
 
 
@@ -42,6 +49,8 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
                 Log.e("Debuginf down",x+"  "+y);
                 break;
             case MotionEvent.ACTION_MOVE: // движение
+                mapLol.setTranslationY(y);
+                mapLol.setTranslationX(x);
                 Log.e("Debuginf move",x+"  "+y);
                 break;
             case MotionEvent.ACTION_UP: // отпускание
