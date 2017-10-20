@@ -16,8 +16,7 @@ import android.widget.Toast;
 
 
 public class Main extends AppCompatActivity implements View.OnTouchListener {
-    float x;
-    float y;
+    float x,y,prevx,prevy,transx,transy;
     ImageView mapLol;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +37,41 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
 
 
 
+
     }
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        x = event.getX();
-        y = event.getY();
+        transx= mapLol.getTranslationX();
+        transy=mapLol.getTranslationY();
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: // нажатие
-                Log.e("Debuginf down",x+"  "+y);
-                break;
+                prevx = event.getX();
+                prevy = event.getY();
             case MotionEvent.ACTION_MOVE: // движение
-                mapLol.setTranslationY(y);
-                mapLol.setTranslationX(x);
-                Log.e("Debuginf move",x+"  "+y);
+                x=event.getX();
+                y=event.getY();
+                if(prevx>x){
+                    transx=transx+((x-prevx)*2);
+                    prevx=x;
+                }else{
+                    transx=transx-((prevx-x)*2);
+                    prevx=x;
+                }
+                if(prevx>y){
+                    transy=transy+((y-prevy)*2);
+                    prevy=y;
+                }else{
+                    transy=transy-((prevy-y)*2);
+                    prevy=y;
+                }
+                mapLol.setTranslationY(transy);
+                mapLol.setTranslationX(transx);
+                Log.e("Debuginf move",transx+"  "+transy);
                 break;
             case MotionEvent.ACTION_UP: // отпускание
             case MotionEvent.ACTION_CANCEL:
-                Log.e("Debuginf down",x+"  "+y);
+                //Log.e("Debuginf down",transx+"  "+transy);
                 break;
         }
 
