@@ -6,15 +6,30 @@
               android:layout_height="match_parent"
               android:background="#ffffff">
 
-    <ImageView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fuckinlol"
-        android:focusable="false"
-        android:isScrollContainer="true"
-        android:src="@mipmap/skyrim"
-        android:scaleType="matrix"
-        android:scaleX="3"
-        android:scaleY="3"
-        />
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fuckinlol"
+            android:focusable="false"
+            android:isScrollContainer="true"
+            android:src="@mipmap/skyrim"
+            android:scaleX="3"
+            android:scaleY="3"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/pepeq"
+            android:id="@+id/loc1"
+            android:translationX="200px"
+            android:translationY="320px"
+            android:scaleX="0.5"
+            android:scaleY="0.5"/>
+    </FrameLayout>
+
 </LinearLayout>
