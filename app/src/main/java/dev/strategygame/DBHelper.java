@@ -11,7 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by danila on 26.03.17.
  */
 
-public class DBHelper extends SQLiteOpenHelper {
+class DBHelper extends SQLiteOpenHelper {
     private SQLiteDatabase gameReadableDb = getReadableDatabase();
 
     private SQLiteDatabase game = getWritableDatabase();
@@ -40,7 +40,17 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS + TABLE_NAME");
         onCreate(db);
     }
-    
+
+    String[] getAllParams(String id){       //тут отдаются все 5 параметров уровня
+        String[] out = new String[5];
+        Cursor cursor = gameReadableDb.rawQuery("SELECT id,path,stage,state,globalStage FROM `levels` WHERE id="+id,null);
+        out[0]= cursor.getString(cursor.getColumnIndex("id"));
+        out[1]= cursor.getString(cursor.getColumnIndex("path"));
+        out[2]= cursor.getString(cursor.getColumnIndex("stage"));
+        out[3]= cursor.getString(cursor.getColumnIndex("state"));
+        out[4]= cursor.getString(cursor.getColumnIndex("globalStage"));
+        return out;
+    }
 
 
 

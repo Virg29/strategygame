@@ -23,7 +23,7 @@ import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 
-public class Main extends AppCompatActivity implements View.OnTouchListener {
+class Main extends AppCompatActivity implements View.OnTouchListener {
     float x, y, prevx, prevy, transx, transy;
     ImageView mapLol;
     int[] elements={R.id.loc1};
@@ -66,7 +66,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
         transx = mapLol.getTranslationX();
         transy = mapLol.getTranslationY();
         switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN: // нажатие
+            case MotionEvent.ACTION_DOWN: // нажатие        вот тут вот пизда начинается тут типа считываются движения и преобразуются в перемешение карты
                 prevx = event.getX();
                 prevy = event.getY();
             case MotionEvent.ACTION_MOVE: // движение
@@ -96,7 +96,7 @@ public class Main extends AppCompatActivity implements View.OnTouchListener {
                 break;
 
         }
-        for(int i=0;i<elements.length;i++){
+        for(int i=0;i<elements.length;i++){                                             //хуйня для картинок лежащих поыерх карты типа кнопок уровня
             ImageView elem = (ImageView)findViewById(elements[i]);
             elem.setTranslationX(xShift[i]+transx);
             elem.setTranslationY(yShift[i]+transy);
